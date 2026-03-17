@@ -1,4 +1,4 @@
-### GLOOME: Gain Loss Mapping Engine
+# GLOOME: Gain Loss Mapping Engine
 A bioinformatics tool for analyzing gene gain and loss events during evolution
 
 GLOOME provides evolutionary analysis of presence and absence profiles (phyletic patterns). These patterns are assumed to result from gain and loss dynamics along a phylogenetic tree. Examples of characters represented by phyletic patterns include:
