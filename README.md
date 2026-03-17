@@ -19,6 +19,7 @@ A full user manual is included in the release:
 GLOOME.CoPAP.gainLoss.Manual.pdf
 
 ### Project structure
+```
 gloome
 ├── gloome
 │   ├── data
@@ -48,6 +49,7 @@ gloome
 │   └── in
 ├── pyproject.toml
 └── README.md
+```
 
 This manual provides comprehensive Gloome on installation, input formats, command-line usage, interpretation of results, and troubleshooting.
 
