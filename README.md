@@ -73,15 +73,12 @@ Required parameters:
 Optional parameters:
 
     --out_dir <type=str>
-
         Specify the outdir path.
 
     --process_id <type=str>
-
         Specify a process ID, otherwise it will be generated automatically.
 
     --mode <type=str>
-
         Execution mode style. 
         Possible options: ('draw_tree', 'compute_likelihood_of_tree', 'create_all_file_types', 'execute_all_actions'). 
         Default is 'execute_all_actions'.
