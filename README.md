@@ -126,12 +126,6 @@ To get the project working, you need to run the command "python -m gloome" in th
 
     --file_phylogenetic_tree_nwk <type=int> 
         Specify file_phylogenetic_tree_nwk. Default is 1.
-
-    --e_mail <type=str> 
-        Specify e_mail (technical parameter, do not change).
-
-    --is_do_not_use_e_mail <type=int> 
-        Specify is_do_not_use_e_mail (technical parameter, do not change).
 ```
 
 ### Citing
