@@ -75,8 +75,8 @@ To get the project working, you need to run the command "python -m gloome" in th
         Specify a process ID, otherwise it will be generated automatically.
 
     --mode <type=str>
-        Execution mode style. 
-        Possible options: ('draw_tree', 'compute_likelihood_of_tree', 'create_all_file_types', 'execute_all_actions'). 
+        Execution mode style. Possible options: 
+        ('draw_tree', 'compute_likelihood_of_tree', 'create_all_file_types', 'execute_all_actions'). 
         Default is 'execute_all_actions'.
 
     --with_internal_nodes <type=int> 
