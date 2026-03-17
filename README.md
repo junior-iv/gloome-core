@@ -140,7 +140,7 @@ Optional parameters:
 If you use the GLOOME web server for your research, please make sure to cite the following publication:
 
 Cohen, O., Ashkenazy, H., Belinky, F., Huchon, D., and Pupko, T. 2010. GLOOME: gain loss mapping engine. 
-Bioinformatics 26(22):2914-2915. [pdf](https://www.tau.ac.il/~talp/publications/GLOOME.pdf) [abs](https://academic.oup.com/bioinformatics/article/26/22/2914/228050)
+Bioinformatics 26(22):2914-2915. [[pdf](https://www.tau.ac.il/~talp/publications/GLOOME.pdf)] [[abs](https://academic.oup.com/bioinformatics/article/26/22/2914/228050)]
 
 ### BibTeX
 Proper citation helps support the development and maintenance of this tool.
