@@ -1,13 +1,14 @@
 import inspect
 import json
+import re
 
 from pathlib import Path
 from typing import Callable, Any
 from datetime import timedelta
 from shutil import make_archive, move
 from numpy import ndarray
-from validate_email import validate_email
-from flask import url_for
+# from validate_email import validate_email
+# from flask import url_for
 
 from gloome.tree.tree import Tree
 from gloome.services.design_functions import *
@@ -391,6 +392,12 @@ def check_data(*args) -> List[Tuple[str, str]]:
     return err_list
 
 
+def validate_email(e_mail: str) -> bool:
+    regex = r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,7}'
+
+    return bool(re.fullmatch(regex, e_mail))
+
+
 def get_function_parameters(func: Callable) -> Tuple[str, ...]:
     return tuple(inspect.signature(func).parameters.keys())
 
@@ -420,20 +427,21 @@ def get_response_design(json_object: Optional[Any], action_name: str, create_lin
     if 'create_all_file_types' in action_name and create_link:
         if output_file:
             json_object.update({'json response file (json)': output_file})
-        json_object = link_design(json_object)
-        json_object = result_design(json_object, change_value='compute_likelihood_of_tree' in action_name,
-                                    change_value_style=False, change_key=True, change_key_style=False)
+        # json_object = link_design(json_object)
+        # json_object = result_design(json_object, change_value='compute_likelihood_of_tree' in action_name,
+        #                             change_value_style=False, change_key=True, change_key_style=False)
     return json_object
 
 
-def link_design(json_object: Any) -> Any:
-    for key, value in json_object.items():
-        if key == 'execution_time':
-            continue
-        json_object.update(
-            {f'{key}': [f'<a class="w-auto mw-auto form-control btn btn-outline-link rounded-pill" href="'
-                        f'{url_for("get_file", file_path=value, mode="download")}" '
-                        f'target="_blank">download</a>',
-                        f'<a class="w-auto mw-auto form-control btn btn-outline-link rounded-pill" href="'
-                        f'{url_for("get_file", file_path=value, mode="view")}" target="_blank">view</a>']})
-    return json_object
+# def link_design(json_object: Any) -> Any:
+#     for key, value in json_object.items():
+#         if key == 'execution_time':
+#             continue
+#         print(key)
+#         json_object.update(
+#             {f'{key}': [f'<a class="w-auto mw-auto form-control btn btn-outline-link rounded-pill" href="'
+#                         f'{url_for("get_file", file_path=value, mode="download")}" '
+#                         f'target="_blank">download</a>',
+#                         f'<a class="w-auto mw-auto form-control btn btn-outline-link rounded-pill" href="'
+#                         f'{url_for("get_file", file_path=value, mode="view")}" target="_blank">view</a>']})
+#     return json_object
