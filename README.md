@@ -64,7 +64,7 @@ To get the project working, you need to run the command "gloome" or "python3 -m 
         Specify a process ID, otherwise it will be generated automatically.
 
     --mode <type=str>
-        Execution mode style. Possible options: 
+        Specify execution mode. Possible options: 
         ('draw_tree', 'compute_likelihood_of_tree', 'create_all_file_types', 'execute_all_actions'). 
         Default is 'execute_all_actions'.
 
@@ -115,6 +115,17 @@ To get the project working, you need to run the command "gloome" or "python3 -m 
 
     --file_phylogenetic_tree_nwk <type=int> 
         Specify file_phylogenetic_tree_nwk. Default is 1.
+
+    --rooting_method <type=str> 
+        Specify tree rooting method. Possible options: ('mad', 'mvr', 'midpoint', 'outgroup').
+        mad - Minimal Ancestor Deviation
+        mvr - Minimum Variance Rooting
+        midpoint - Midpoint Rooting
+        outgroup - Outgroup Rooting
+        Default is 'midpoint'.
+    
+    --leaf <type=str> 
+        Specify leaf for outgroup rooting. Default is ''.
 ```
 
 ### Citing

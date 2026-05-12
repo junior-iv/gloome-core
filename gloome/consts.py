@@ -9,6 +9,8 @@ from gloome.tree.tree import Tree
 from gloome.services.service_functions import check_data, execute_all_actions, recompile_json, del_bootstrap_values
 
 MODE = ['draw_tree', 'compute_likelihood_of_tree', 'create_all_file_types', 'execute_all_actions']
+ROOTING_METHODS = [('mad', 'Minimal Ancestor Deviation'), ('mvr', 'Minimum Variance Rooting'),
+                   ('midpoint', 'Midpoint Rooting'), ('outgroup', 'Outgroup Rooting')]
 IS_PRODUCTION = True
 MAX_CONTENT_LENGTH = 16 * 1000 * 1000 * 1000
 PREFIX = '/'
@@ -118,6 +120,9 @@ DEFAULT_FORM_ARGUMENTS = {
     'pi_1': 0.5,
     'coefficient_bl': 1.0,
     'e_mail': '',
+    'rooting_method': ROOTING_METHODS[2][0],
+    'rooting_methods': ROOTING_METHODS,
+    'leaf': '',
     'is_optimize_pi': True,
     'is_optimize_pi_average': False,
     'is_optimize_alpha': True,
@@ -143,7 +148,7 @@ DEFAULT_ARGUMENTS.update(DEFAULT_FORM_ARGUMENTS)
 ACTIONS = Actions(**{
                      'del_bootstrap_values': del_bootstrap_values,
                      'check_data': check_data,
-                     'set_root': Tree.get_root_by_midpoint,
+                     'set_root': Tree.set_root,
                      'check_tree': Tree.rename_nodes,
                      'set_tree_data': Tree.set_tree_data,
                      'calculate_tree': Tree.calculate_tree,
@@ -188,8 +193,9 @@ USAGE = '''\tRequired parameters:
 \t\t--process_id <type=str>
 \t\t\tSpecify a process ID or it will be generated automatically.
 \t\t--mode <type=str>
-\t\t\tExecution mode style. Possible options: ('draw_tree', 'compute_likelihood_of_tree', 
-\t\t\t'create_all_file_types', 'execute_all_actions'). Default is 'execute_all_actions'.
+\t\t\tSpecify execution mode. Possible options: 
+\t\t\t('draw_tree', 'compute_likelihood_of_tree', 'create_all_file_types', 'execute_all_actions'). 
+\t\t\tDefault is {'execute_all_actions'}.
 \t\t--with_internal_nodes <type=int> 
 \t\t\tSpecify the tree has internal nodes. Default is 1.
 \t\t--categories_quantity <type=int>
@@ -224,6 +230,15 @@ USAGE = '''\tRequired parameters:
 \t\t\tSpecify file_table_of_attributes_tsv. Default is 1.
 \t\t--file_phylogenetic_tree_nwk <type=int> 
 \t\t\tSpecify file_phylogenetic_tree_nwk. Default is 1.
+\t\t--rooting_method <type=str> 
+\t\t\tSpecify tree rooting method. Possible options: ('mad', 'mvr', 'midpoint', 'outgroup').
+\t\t\tmad - Minimal Ancestor Deviation
+\t\t\tmvr - Minimum Variance Rooting
+\t\t\tmidpoint - Midpoint Rooting
+\t\t\toutgroup - Outgroup Rooting
+\t\t\tDefault is 'midpoint'.
+\t\t--leaf <type=str> 
+\t\t\tSpecify leaf for outgroup rooting. Default is ''.
 \t\t--e_mail <type=str> 
 \t\t\tSpecify e_mail (technical parameter, do not change).
 \t\t--is_do_not_use_e_mail <type=int> 
